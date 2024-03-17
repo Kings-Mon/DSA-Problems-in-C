@@ -1,3 +1,5 @@
+// Implementation of Stack using Array :- 
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -88,3 +90,105 @@ void show()
             printf("%d\n", stack[i]);
     }
 }
+
+// ===================================================================================================== //
+
+// Stack implementation using Linked List :-
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node* next;
+};
+
+struct Node* newNode(int data) 
+{
+    struct Node* node = (struct Node*)malloc(sizeof(struct Node));
+    if (!node) 
+    {
+        printf("Memory allocation failed\n");
+        exit(EXIT_FAILURE);
+    }
+    node->data = data;
+    node->next = NULL;
+    return node;
+}
+
+int isEmpty(struct Node* top)
+{
+    return (top == NULL);
+}
+
+void push(struct Node** top, int data) 
+{
+    struct Node* newNodePtr = newNode(data);
+    newNodePtr->next = *top;
+    *top = newNodePtr;
+    printf("%d pushed to stack\n", data);
+}
+
+int pop(struct Node** top)
+{
+    if (isEmpty(*top)) 
+    {
+        printf("Stack is empty\n");
+        exit(EXIT_FAILURE);
+    }
+    struct Node* temp = *top;
+    int popped = temp->data;
+    *top = temp->next;
+    free(temp);
+    return popped;
+}
+
+int peek(struct Node* top)
+{
+    if (isEmpty(top)) 
+    {
+        printf("Stack is empty\n");
+        exit(EXIT_FAILURE);
+    }
+    return top->data;
+}
+
+void display(struct Node* top) 
+{
+    if (isEmpty(top)) 
+    {
+        printf("Stack is empty\n");
+        return;
+    }
+    struct Node* temp = top;
+    printf("Stack: ");
+    while (temp != NULL) 
+    {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+int main() 
+{
+    struct Node* top = NULL;
+
+    push(&top, 1);
+    push(&top, 2);
+    push(&top, 3);
+    push(&top, 4);
+
+    display(top);
+
+    printf("Peek: %d\n", peek(top));
+
+    printf("Popped: %d\n", pop(&top));
+
+    display(top);
+
+    return 0;
+}
+
+// =================================================================================================================== //
