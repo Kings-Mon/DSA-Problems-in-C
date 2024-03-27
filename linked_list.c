@@ -9,8 +9,8 @@ struct node
 
 struct node *head;  
 
-void begin_insert ();   
-void last_insert ();  
+void begin_insert();   
+void last_insert();  
 void random_insert();  
 void begin_delete();  
 void last_delete();  
@@ -50,9 +50,9 @@ void main()
             display();        
             break;  
             case 8: 
-			reverse();
-			break;
-			case 9: 
+	    reverse();
+	    break;
+	    case 9: 
             printf("\nProgram Ended.\n"); 
             exit(0);
             break;  
@@ -80,6 +80,7 @@ void begin_insert()
     }
       
 }  
+
 void last_insert()  
 {  
     struct node *ptr,*temp;     
@@ -112,6 +113,7 @@ void last_insert()
         }  
     }  
 }  
+
 void random_insert()  
 {  
     int loc;
@@ -174,6 +176,7 @@ void begin_delete()
         printf("\nNode Deleted from the Begining.\n");  
     }  
 }  
+
 void last_delete()  
 {  
     struct node *ptr,*ptr1;  
@@ -200,6 +203,7 @@ void last_delete()
         printf("\nDeleted Node from the Last.\n");  
     }     
 }  
+
 void random_delete()  
 {  
     struct node *ptr, *ptr2;  
